@@ -33,7 +33,7 @@ header {
 
 .logo-header {
     display: block;
-    margin-left: 20px;
+    margin-left: 35px;
     margin-bottom: 1%;
     margin-top: 0.5%;
     height: 80%;
@@ -76,7 +76,7 @@ header {
     background-color: rgba(255, 255, 255, 0.027);
 }
 
-main {  
+main {
     min-height: 80vh;
     margin-right: 1%;
     float: right;
@@ -84,21 +84,10 @@ main {
     height: 100%;
     margin-bottom: 1.5%;
     border-radius: 1%;
-    box-shadow: 1px 2px 1px 1px rgb(110, 110, 110);
+    box-shadow: 1px 1px 1px 1px rgb(110, 110, 110);
     margin-top: 50px;
 }
 
-.container{
-    width: 100%;
-    height: 100%;
-}
-
-.section{
-    font-family: 'Roboto';
-    width: 98%;
-    margin-top: 2%;
-    margin-left: 1%;
-}
 
 footer {
     font-weight: bolder;
