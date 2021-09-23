@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Estilos -->
     <link rel="stylesheet" href="../css/index.css" TYPE="text/css">
+    <link rel="stylesheet" href="../css/tiendas.css" TYPE="text/css">
     <link rel="shortcut icon" href="../img/logo.png">
     <title>Press Any Button</title>
 
@@ -16,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- jQuery-->
+    <script src="../js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -27,7 +31,16 @@
 
     <nav class="menu">
         <div class="item-menu">
-            <a href="index.html" class="item-menu-enlace">Home</a>
+            <a href="#Home" data-hash="Home" class="item-menu-enlace">Home</a>
+        </div>
+        <div class="item-menu">
+            <a href="#Juegos" data-hash="Juegos" class="item-menu-enlace">Juegos</a>
+        </div>
+        <div class="item-menu">
+            <a href="#Tiendas" data-hash="Tiendas" class="item-menu-enlace">Tiendas</a>
+        </div>
+        <div class="item-menu">
+            <a href="#Ofertas" data-hash="Ofertas" class="item-menu-enlace">Ofertas</a>
         </div>
     </nav>
 
@@ -50,6 +63,8 @@
 
         </div>
     </footer>
+
+    <script type="module" src="../js/index.js"></script>
 </body>
 
 </html>
