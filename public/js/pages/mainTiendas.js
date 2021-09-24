@@ -1,4 +1,5 @@
-import { getStores } from "../api/apiStores.js";
+import { getStores } from "../api/apiPages.js";
+import { mostrarLoader, quitarLoader } from "../components/loader.js";
 
 const urlLogos = "https://www.cheapshark.com/";
 const main = document.querySelector("main");
@@ -17,6 +18,7 @@ export const mainStores = () => {
 }
 
 export const createStores = () => {
+    mostrarLoader("tiendas");
     getStores()
         .done((data) => {
             const tiendas = document.querySelector(".tiendas");
@@ -32,6 +34,7 @@ export const createStores = () => {
                     tiendas.append(divStore)
                 }
             })
+            quitarLoader("tiendas");
         })
         .fail(() => {
             alert("error")

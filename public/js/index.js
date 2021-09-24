@@ -1,4 +1,4 @@
-import { getGameByTitle } from "./api/apiStores.js";
+import { mainDeals } from "./pages/mainOfertas.js";
 import { mainStores } from "./pages/mainTiendas.js";
 
 const main = document.querySelector("main")
@@ -12,14 +12,14 @@ const limpiarMain = () => {
 const changePage = () => {
     let localizacion = location.hash.split("#")[1];
     limpiarMain();
-    switch (localizacion) {
-        case "Home":
-            break;
-        case "Tiendas":
+    if (localizacion) {
+        if (localizacion.includes("Ofertas")) {
+            let page = parseInt(localizacion.split("=")[1]);
+            mainDeals(page);
+        }
+        if (localizacion.includes("Tiendas")) {
             mainStores();
-            break;;
-        case "Ofertas":
-            break;
+        }
     }
 }
 
