@@ -1,4 +1,5 @@
-import { mainTiendas } from "./pages/mainTiendas.js";
+import { getGameByTitle } from "./api/apiStores.js";
+import { mainStores } from "./pages/mainTiendas.js";
 
 const main = document.querySelector("main")
 
@@ -14,10 +15,8 @@ const changePage = () => {
     switch (localizacion) {
         case "Home":
             break;
-        case "Juegos":
-            break;
         case "Tiendas":
-            mainTiendas();
+            mainStores();
             break;;
         case "Ofertas":
             break;
@@ -25,8 +24,6 @@ const changePage = () => {
 }
 
 changePage();
-
-
 
 window.addEventListener("hashchange", () => {
     changePage();

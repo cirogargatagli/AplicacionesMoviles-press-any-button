@@ -3,7 +3,7 @@ import { getStores } from "../api/apiStores.js";
 const urlLogos = "https://www.cheapshark.com/";
 const main = document.querySelector("main");
 
-export const mainTiendas = () => {
+export const mainStores = () => {
     const section = document.createElement("section");
     section.className = "section";
     const tiendas = document.createElement("div");
