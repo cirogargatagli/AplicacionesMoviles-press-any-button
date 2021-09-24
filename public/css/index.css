@@ -88,6 +88,25 @@ main {
     margin-top: 50px;
 }
 
+.container{
+    width: 100%;
+    height: 100%;
+}
+
+.section{
+    font-family: 'Roboto';
+    width: 95%;
+    margin-top: 2%;
+    margin-left: 3%;
+}
+
+main h3 {
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px #a1909069;
+    color: white;
+}
+
 
 footer {
     font-weight: bolder;
