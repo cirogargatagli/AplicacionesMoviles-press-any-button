@@ -1,3 +1,4 @@
+import { mainContact } from "./pages/mainContacto.js";
 import { mainDeals } from "./pages/mainOfertas.js";
 import { mainTienda } from "./pages/mainTienda.js";
 import { mainStores } from "./pages/mainTiendas.js";
@@ -25,6 +26,9 @@ const changePage = () => {
         }
         if (localizacion.includes("Tiendas?storeID")) {
             mainTienda(getQuerys());
+        }
+        if (localizacion == "Contacto") {
+            mainContact();
         }
     }
 }
