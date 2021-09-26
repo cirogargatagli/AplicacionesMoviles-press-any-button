@@ -3,7 +3,7 @@ import { get } from "./apiService.js"
 const URL = 'https://www.cheapshark.com/api/1.0/'
 
 const urlStores = URL + "stores"
-const urlDeals = URL + "deals?pageNumber="
+const urlDeals = URL + "deals?"
 const urlGames = "https://www.cheapshark.com/api/1.0/games?ids="
 
 export const getStores = () => {
@@ -15,5 +15,9 @@ export const getGameByTitle = (title) => {
 }
 
 export const getDeals = (page) => {
-    return get(urlDeals + page);
+    return get(urlDeals + "pageNumber=" + page);
+}
+
+export const getDealsByStoreID = (query) => {
+    return get(urlDeals + query)
 }

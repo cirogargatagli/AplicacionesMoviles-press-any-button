@@ -1,5 +1,7 @@
 import { mainDeals } from "./pages/mainOfertas.js";
+import { mainTienda } from "./pages/mainTienda.js";
 import { mainStores } from "./pages/mainTiendas.js";
+import { getQuerys } from "./utils/querysURLUtils.js";
 
 const main = document.querySelector("main")
 
@@ -12,17 +14,20 @@ const limpiarMain = () => {
 const changePage = () => {
     let localizacion = location.hash.split("#")[1];
     limpiarMain();
+    window.scrollTo(0, 0)
     if (localizacion) {
         if (localizacion.includes("Ofertas")) {
             let page = parseInt(localizacion.split("=")[1]);
             mainDeals(page);
         }
-        if (localizacion.includes("Tiendas")) {
+        if (localizacion == "Tiendas") {
             mainStores();
+        }
+        if (localizacion.includes("Tiendas?storeID")) {
+            mainTienda(getQuerys());
         }
     }
 }
-
 changePage();
 
 window.addEventListener("hashchange", () => {

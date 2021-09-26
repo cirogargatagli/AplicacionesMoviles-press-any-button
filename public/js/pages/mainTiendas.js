@@ -24,13 +24,16 @@ export const createStores = () => {
             const tiendas = document.querySelector(".tiendas");
             data.forEach(store => {
                 if (store.isActive == 1) {
+                    let a = document.createElement("a");
+                    a.href = "#Tiendas?storeID=" + store.storeID + "&pageNumber=1";
                     let img = document.createElement("img");
                     img.src = urlLogos + store.images.logo;
+                    a.append(img);
                     let divStore = document.createElement("div");
                     divStore.className = "tienda"
                     divStore.setAttribute("id", store.storeID)
                     divStore.setAttribute("name", store.storeName)
-                    divStore.append(img)
+                    divStore.append(a)
                     tiendas.append(divStore)
                 }
             })
@@ -40,6 +43,3 @@ export const createStores = () => {
             alert("error")
         })
 }
-
-
-
