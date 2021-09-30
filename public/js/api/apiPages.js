@@ -15,9 +15,11 @@ export const getGameByTitle = (title) => {
 }
 
 export const getDeals = (page) => {
-    return get(urlDeals + "pageNumber=" + page);
+    const queryMobile = navigator.userAgentData.mobile ? "&pageSize=20" : ""
+    return get(urlDeals + "pageNumber=" + page + queryMobile);
 }
 
 export const getDealsByStoreID = (query) => {
-    return get(urlDeals + query)
+    const queryMobile = navigator.userAgentData.mobile ? "&pageSize=20" : ""
+    return get(urlDeals + query + queryMobile)
 }

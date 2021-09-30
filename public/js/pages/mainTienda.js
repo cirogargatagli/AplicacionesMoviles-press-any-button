@@ -62,7 +62,7 @@ const createTienda = (arrayQuerys) => {
             data.forEach(deal => {
                 let img = document.createElement("img");
                 img.src = deal.thumb;
-                let divDeal = document.createElement("div");
+                let divDeal = document.createElement("article");
                 divDeal.className = "oferta"
                 divDeal.setAttribute("id", deal.dealID)
                 divDeal.setAttribute("name", deal.title)
