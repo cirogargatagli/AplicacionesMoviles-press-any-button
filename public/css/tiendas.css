@@ -15,8 +15,8 @@
     border-radius: 50%;
     border-color: #787d83;
     overflow: hidden;
-    width: 350px;
-    height: 250px;
+    width: 120px;
+    height: 100px;
     transition: all 300ms;
 }
 

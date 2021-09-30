@@ -29,7 +29,7 @@ export const createStores = () => {
                     let img = document.createElement("img");
                     img.src = urlLogos + store.images.logo;
                     a.append(img);
-                    let divStore = document.createElement("div");
+                    let divStore = document.createElement("article");
                     divStore.className = "tienda"
                     divStore.setAttribute("id", store.storeID)
                     divStore.setAttribute("name", store.storeName)
