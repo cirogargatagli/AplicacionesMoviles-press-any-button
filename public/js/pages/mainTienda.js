@@ -72,7 +72,7 @@ const createTienda = (arrayQuerys) => {
             createPagination(page, parseInt(request.getResponseHeader('x-total-page-count')) + 1, arrayQuerys);
             quitarLoader("ofertas")
         })
-        .fail(() => {
-            alert("error")
+        .fail((error) => {
+            console.log(error)
         })
 }
