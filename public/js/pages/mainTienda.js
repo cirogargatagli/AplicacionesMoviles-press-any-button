@@ -34,7 +34,7 @@ export const mainTienda = (arrayQuerys) => {
             })
         })
         .fail()
-    section.append(titulo, divBanner, ofertas)
+    section.append(divBanner, ofertas)
     main.append(section)
 
     createTienda(arrayQuerys)

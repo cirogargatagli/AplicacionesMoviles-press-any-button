@@ -6,8 +6,6 @@ import { mainStores } from "./pages/mainTiendas.js";
 import { getQuerys } from "./utils/querysURLUtils.js";
 
 const main = document.querySelector("main")
-const hamburguesa = document.querySelector(".hamburguesa");
-const menu = document.querySelector(".menu");
 const itemsMenu = document.querySelectorAll(".item-menu-enlace")
 
 
@@ -41,14 +39,12 @@ const changePage = () => {
     }
 }
 
-if (!!hamburguesa) {
-    hamburguesa.addEventListener("click", () => {
-        menu.style.display == "block" ? menu.style.display = "none" : menu.style.display = "block"
+if (!!$(".hamburguesa")) {
+    $(".hamburguesa").click(() => {
+        $(".menu").css("display") == "none" ? $(".menu").slideDown() : $(".menu").slideUp()
     })
-    itemsMenu.forEach(item => {
-        item.addEventListener("click", () => {
-            menu.style.display = "none"
-        })
+    $(".item-menu-enlace").click(item => {
+        $(".menu").slideUp()
     })
 }
 
