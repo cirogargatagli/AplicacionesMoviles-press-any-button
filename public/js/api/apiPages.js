@@ -5,6 +5,7 @@ const URL = 'https://www.cheapshark.com/api/1.0/'
 const urlStores = URL + "stores"
 const urlDeals = URL + "deals?"
 const urlGames = "https://www.cheapshark.com/api/1.0/games?ids="
+const redirectToDeal = "https://www.cheapshark.com/redirect?dealID="
 
 export const getStores = () => {
     return get(urlStores);

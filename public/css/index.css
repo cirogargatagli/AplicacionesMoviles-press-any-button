@@ -58,41 +58,41 @@ header {
 }
 
 .menu {
-    background-color: rgba(255, 0, 0, 0.452);
-    float: right;
-    height: 40%;
     width: 100%;
     margin-top: 0.6%;
     display: none;
-    margin-bottom: 50px;
+    margin-bottom: 50px;    
+    align-items: center;    
+    color: gray;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
-
-.item-menu{
-    width: 100%;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-bottom: black solid 1px;
-}
-
 .item-menu-enlace{
     font-family: 'Roboto';
-    display: block;
     width: 90%;
-    font-weight: 2px;
     color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10%;
     transition: all 100ms;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
 }
 
 .item-menu-enlace:hover{
-    font-size: 1.3rem;
-    background-color: rgba(255, 255, 255, 0.027);
+    background-color: rgba(87, 87, 87, 0.027);
 }
 
 .item-menu-enlace:active{
-    color: rgba(255, 0, 0, 0.774);
+    background-color: rgba(255, 0, 0, 0.24);
+}
+
+.item-menu-enlace img {
+    width: 40px;
+    height: 40px;
+}
+
+.icon-active{
+    border-bottom: solid 3px red;
+    background-image: linear-gradient(180deg, rgb(20, 20, 20), rgba(255, 0, 0, 0.082));
 }
 
 main {
