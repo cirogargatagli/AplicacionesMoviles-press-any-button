@@ -91,7 +91,7 @@ const buscar = (title) => {
 
 const pressDivGame = (divGame) => {
     divGame.addEventListener("click", (e) => {
-        if (e.target.className != "ofertas-por-tienda") {
+        if (e.target.tagName != "A") {
             const articulo = $(".ofertas-por-tienda").parent();
 
             if (articulo.length == 0) {
