@@ -1,3 +1,4 @@
+import { mainBusqueda } from "./pages/mainBusqueda.js";
 import { mainContact } from "./pages/mainContacto.js";
 import { mainHome } from "./pages/mainHome.js";
 import { mainDeals } from "./pages/mainOfertas.js";
@@ -8,13 +9,6 @@ import { getQuerys } from "./utils/querysURLUtils.js";
 const main = document.querySelector("main")
 const itemsMenu = document.querySelectorAll(".item-menu-enlace")
 
-
-const limpiarMain = () => {
-    while (main.firstChild) {
-        main.removeChild(main.firstChild);
-    }
-}
-
 const toggleIconsMenu = (id) => {
     $(".icon-active").toggleClass("icon-active")
     $("#" + id).toggleClass("icon-active")
@@ -22,7 +16,7 @@ const toggleIconsMenu = (id) => {
 
 const changePage = () => {
     let localizacion = location.hash.split("#")[1];
-    limpiarMain();
+    $("main").empty();
     window.scrollTo(0, 0)
     if (localizacion) {
         toggleIconsMenu(localizacion.split("?")[0])
@@ -42,6 +36,9 @@ const changePage = () => {
         if (localizacion == "Contacto") {
             mainContact();
         }
+        if (localizacion == "Busqueda") {
+            mainBusqueda();
+        }
     }
 }
 
@@ -55,9 +52,9 @@ if ($(".hamburguesa").length > 0) {
             menu.slideUp()
         }
     })
-    // $(".item-menu-enlace").click(item => {
-    //     $(".menu").slideUp()
-    // })
+    $(".item-menu-enlace").click(item => {
+        $(".menu").slideUp()
+    })
 }
 
 location.hash = "#Home"

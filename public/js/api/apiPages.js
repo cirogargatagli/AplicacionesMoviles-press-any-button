@@ -4,23 +4,37 @@ const URL = 'https://www.cheapshark.com/api/1.0/'
 
 const urlStores = URL + "stores"
 const urlDeals = URL + "deals?"
-const urlGames = "https://www.cheapshark.com/api/1.0/games?ids="
-const redirectToDeal = "https://www.cheapshark.com/redirect?dealID="
+const urlGames = URL + "games?"
+export const redirectToDeal = "https://www.cheapshark.com/redirect?dealID="
 
 export const getStores = () => {
     return get(urlStores);
 }
 
 export const getGameByTitle = (title) => {
-    return get(urlGames + "?=" + title + "&limit=60&exact=0")
+    return get(urlGames + "title=" + title + "&limit=60")
 }
 
 export const getDeals = (page) => {
-    const queryMobile = navigator.userAgentData.mobile ? "&pageSize=20" : ""
-    return get(urlDeals + "pageNumber=" + page + queryMobile);
+    let queryPageSize = pageSize();
+    return get(urlDeals + "pageNumber=" + page + queryPageSize);
 }
 
 export const getDealsByStoreID = (query) => {
-    const queryMobile = navigator.userAgentData.mobile ? "&pageSize=20" : ""
-    return get(urlDeals + query + queryMobile)
+    let queryPageSize = pageSize();
+    return get(urlDeals + query + queryPageSize)
+}
+
+export const getDealsByGameID = (gameID) => {
+    return get(urlGames + "id=" + gameID)
+}
+
+const pageSize = () => {
+    let queryMobile = "&pageSize=";
+    if (screen.width < 768) {
+        return queryMobile += "10";
+    }
+    if (screen.width < 1024) {
+        return queryMobile += "20";
+    }
 }

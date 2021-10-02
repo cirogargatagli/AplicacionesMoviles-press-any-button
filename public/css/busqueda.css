@@ -1,0 +1,149 @@
+.input-busqueda{
+    width: 90%;
+    margin-left: 6%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.input-busqueda input{
+    width: 100%;
+    height: 100%;
+    background: none;
+    color: white;
+    padding-top: 20px;
+    border: none;
+    outline: 0px;
+}
+.input-busqueda .lbl-busqueda{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    color: white;
+    border-bottom: 1px solid #b1afaf;
+}
+
+.input-busqueda .lbl-busqueda::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 100%;
+    border-bottom: 2px solid rgb(223, 5, 5);
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+.text-busqueda{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.input-busqueda input:focus + .lbl-busqueda .text-busqueda,
+.input-busqueda input:valid + .lbl-busqueda .text-busqueda{
+    transform: translateY(-150%);
+    font-size: 12px;
+    color: rgb(223, 5, 5);
+}
+.input-busqueda input:focus + .lbl-busqueda::after,
+.input-busqueda input:valid + .lbl-busqueda::after{
+    transform: translateX(0%);
+}
+
+.fa-searchengin{
+    align-items: center;
+    height: 100%;
+    color: gray;
+}
+.svg-inline--fa.fa-w-15 {
+    width: 1.4em;
+}
+
+.button-busqueda{
+    text-decoration: none;
+    background-color: rgb(20, 20, 20);
+    height: 70%;
+    margin-top: 10px;
+    border: none;
+}
+
+.games{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.game{
+    margin-top: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 2px 2px 2px 2px rgba(179, 179, 179, 0.342);
+    border-color: #787d83;
+    overflow: hidden;
+    width: 350px;
+    height: auto;
+    transition: all 300ms;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.game img{
+    text-align: center;
+    height: 65px;
+    background-size: contain;
+}
+
+.game:hover {
+    background-color: rgba(20, 20, 20, 0.651);
+    box-shadow: 2px 2px 2px 2px rgba(253, 33, 33, 0.7);
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.titulo-juego{
+    margin-top: 10px;
+}
+
+.precio-bajo-juego{
+    margin-top: 7px;
+    font-size: 0.7rem;
+}
+
+.line-deal{
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.line-deal img{
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    margin-left: 6px;
+}
+.line-deal a{
+    text-decoration: none;
+    color: gray;
+    text-align: center;
+    align-items: center;
+    height: auto;
+}
+.line-deal a span{
+    align-items: center;
+}
+
+.ofertas-por-tienda{
+    padding: 10px 10px;
+}
