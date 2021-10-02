@@ -39,5 +39,6 @@ const createDeals = (page) => {
         })
         .fail(() => {
             alert("error")
+            quitarLoader("ofertas")
         })
 }
