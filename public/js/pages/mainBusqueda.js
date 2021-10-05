@@ -94,7 +94,8 @@ const buscar = (title) => {
 
 const pressDivGame = (divGame) => {
     divGame.addEventListener("click", (e) => {
-        if (e.target.tagName != "A") {
+        console.log(e.target.tagName)
+        if (e.target.tagName != "A" && e.target.tagName != "I" && e.target.className != "icon-store") {
             const articulo = $(".ofertas-por-tienda").parent();
 
             if (articulo.length == 0) {
@@ -120,7 +121,6 @@ const pressAddToCart = (i, dealID) => {
         let ofertas = JSON.parse(localStorage.getItem("ofertas") || "[]")
         ofertas.push(dealID);
         localStorage.setItem("ofertas", JSON.stringify(ofertas))
-
     })
 }
 
@@ -134,15 +134,18 @@ const mostrarOfertas = (gameID) => {
                 const divLine = document.createElement("div");
                 divLine.className = "line-deal";
 
-
+                const a = document.createElement("a");
                 let icon = document.createElement("img");
-                icon.href = redirectToDeal + deal.dealID;
-                icon.target = "_blank";
+                icon.className = "icon-store";
+                a.href = redirectToDeal + deal.dealID;
+                a.target = "_blank";
                 getStores().done(data => {
                     let store = data.filter(store => store.storeID == deal.storeID)[0];
                     icon.src = urlLogos + store.images.icon;
                     // spanTienda.innerText = store.storeName;
                 })
+
+                a.append(icon)
 
                 const i = document.createElement("i");
                 i.className = "fas fa-cart-plus";
@@ -153,7 +156,7 @@ const mostrarOfertas = (gameID) => {
                 spanPrecio.innerText = "$" + deal.price;
                 precio.append(spanPrecio);
 
-                divLine.append(icon, precio, i);
+                divLine.append(a, precio, i);
 
                 divOfertas.append(divLine);
             })
