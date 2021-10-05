@@ -17,7 +17,7 @@ export const mainBusqueda = () => {
     const games = document.createElement("section")
 
     games.className = "games"
-    i.className = "fab fa-searchengin";
+    i.className = "fas fa-search";
     button.setAttribute("type", "submit");
     button.className = "button-busqueda";
     button.setAttribute("type", "submit")
@@ -33,6 +33,7 @@ export const mainBusqueda = () => {
     label.append(span);
     button.append(i);
     form.append(input, label, button);
+
     section.append(form)
 
     main.append(section, games)
@@ -44,7 +45,9 @@ const addEventBuscar = () => {
     buttonBusqueda.addEventListener("click", (e) => {
         e.preventDefault();
         let value = document.getElementById("busqueda").value;
-        buscar(value);
+        if (value.length > 0) {
+            buscar(value);
+        }
     })
 }
 
@@ -112,38 +115,58 @@ const pressDivGame = (divGame) => {
     })
 }
 
+const pressAddToCart = (i, dealID) => {
+    i.addEventListener("click", () => {
+        let ofertas = JSON.parse(localStorage.getItem("ofertas") || "[]")
+        ofertas.push(dealID);
+        localStorage.setItem("ofertas", JSON.stringify(ofertas))
+
+    })
+}
+
 const mostrarOfertas = (gameID) => {
     const divOfertas = document.createElement("div");
-    divOfertas.className = "ofertas-por-tienda"
-    divOfertas.style.display = "none"
+    divOfertas.className = "ofertas-por-tienda";
+    divOfertas.style.display = "none";
     getDealsByGameID(gameID)
         .done(res => {
             res.deals.forEach(deal => {
                 const divLine = document.createElement("div");
-                divLine.className = "line-deal"
+                divLine.className = "line-deal";
 
 
                 let icon = document.createElement("img");
-                const verEn = document.createElement("a");
-                verEn.innerText = "Ir a"
-                verEn.href = redirectToDeal + deal.dealID;
-                verEn.target = "_blank"
+                icon.href = redirectToDeal + deal.dealID;
+                icon.target = "_blank";
                 getStores().done(data => {
-                    let store = data.filter(store => store.storeID == deal.storeID)[0]
+                    let store = data.filter(store => store.storeID == deal.storeID)[0];
                     icon.src = urlLogos + store.images.icon;
                     // spanTienda.innerText = store.storeName;
                 })
 
-                verEn.append(icon)
+                const i = document.createElement("i");
+                i.className = "fas fa-cart-plus";
+                pressAddToCart(i, deal.dealID);
+
                 const precio = document.createElement("div");
                 const spanPrecio = document.createElement("span");
                 spanPrecio.innerText = "$" + deal.price;
                 precio.append(spanPrecio);
 
-                divLine.append(verEn, precio);
+                divLine.append(icon, precio, i);
 
                 divOfertas.append(divLine);
             })
+
+            const divLine = document.createElement("div");
+            divLine.className = "cheapest-price-ever"
+            const span = document.createElement("span");
+            let fecha = new Date(res.cheapestPriceEver.date);
+            span.innerText = "Precio más bajo: $" + res.cheapestPriceEver.price + " el " + fecha.getDate() + " de " + fecha.toLocaleString('default', { month: 'long' });
+            divLine.append(span);
+            divOfertas.append(divLine);
+
+
             document.getElementById(gameID).append(divOfertas);
             $(".ofertas-por-tienda").show(400);
         })

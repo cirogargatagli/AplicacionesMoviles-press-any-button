@@ -15,9 +15,9 @@ export const getGameByTitle = (title) => {
     return get(urlGames + "title=" + title + "&limit=60")
 }
 
-export const getDeals = (page) => {
+export const getDeals = (query) => {
     let queryPageSize = pageSize();
-    return get(urlDeals + "pageNumber=" + page + queryPageSize);
+    return get(urlDeals + query + queryPageSize);
 }
 
 export const getDealsByStoreID = (query) => {
