@@ -24,8 +24,7 @@ const changePage = () => {
             mainHome();
         }
         if (localizacion.includes("Ofertas")) {
-            let page = parseInt(localizacion.split("=")[1]);
-            mainDeals(page);
+            mainDeals(getQuerys());
         }
         if (localizacion == "Tiendas") {
             mainStores();
@@ -36,7 +35,7 @@ const changePage = () => {
         if (localizacion == "Contacto") {
             mainContact();
         }
-        if (localizacion == "Busqueda") {
+        if (localizacion.includes("Busqueda")) {
             mainBusqueda();
         }
     }
