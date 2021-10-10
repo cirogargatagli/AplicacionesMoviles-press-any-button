@@ -4,6 +4,8 @@
     flex-wrap: wrap;
     justify-content: space-between;
     height: 100%;
+    color: white;
+    text-align: center;
 }
 
 .oferta{

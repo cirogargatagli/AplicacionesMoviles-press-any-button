@@ -1,0 +1,31 @@
+#gastos{
+    font-size: 20px;
+    text-align: left !important;
+}
+
+.div-detalle{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.div-texto{
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-store{
+    height: 23px !important;
+    width: 23px;
+}
+
+.span-cantidad{
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 13px;
+    background-color: red;
+    border-radius: 50%;
+}
