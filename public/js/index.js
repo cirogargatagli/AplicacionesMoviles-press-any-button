@@ -1,4 +1,5 @@
 import { mainBusqueda } from "./pages/mainBusqueda.js";
+import { mainCarrito } from "./pages/mainCarrito.js";
 import { mainContact } from "./pages/mainContacto.js";
 import { mainHome } from "./pages/mainHome.js";
 import { mainDeals } from "./pages/mainOfertas.js";
@@ -22,6 +23,9 @@ const changePage = () => {
         toggleIconsMenu(localizacion.split("?")[0])
         if (localizacion == "Home") {
             mainHome();
+        }
+        if (localizacion == "Carrito") {
+            mainCarrito();
         }
         if (localizacion.includes("Ofertas")) {
             mainDeals(getQuerys());

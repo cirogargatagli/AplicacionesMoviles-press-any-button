@@ -44,6 +44,21 @@ header {
     height: 100%;
 }
 
+.compra {
+    display: flex;
+    float: right;
+    align-items: center;
+    height: 100%;
+    width: 5%;
+    margin-right: 15px;    
+}
+
+.carrito {
+    margin-left: 5%;
+    font-size: 25px;
+    color: gray;
+}
+
 .hamburguesa{
     height: 50px;
     width: 10%;
@@ -113,6 +128,7 @@ main {
 .section{
     font-family: 'Roboto';
     width: 100%;
+    color: white;
 }
 
 main h3 {

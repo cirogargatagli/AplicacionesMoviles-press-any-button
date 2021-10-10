@@ -51,6 +51,8 @@ const addEventBuscar = () => {
     })
 }
 
+
+
 const buscar = (title) => {
     const divGames = document.querySelector(".games");
     $(".games").empty();
@@ -80,7 +82,12 @@ const buscar = (title) => {
                 divGame.setAttribute("name", game.external)
                 divGame.append(img, divTitle, divPrecio)
 
-                pressDivGame(divGame);
+                let dealCarrito = {};
+                dealCarrito.title = game.external;
+                dealCarrito.img = game.thumb;
+                dealCarrito.cheapest = game.cheapest;
+
+                pressDivGame(divGame, dealCarrito);
 
                 divGames.append(divGame)
             })
@@ -92,14 +99,13 @@ const buscar = (title) => {
         })
 }
 
-const pressDivGame = (divGame) => {
+const pressDivGame = (divGame, dealCarrito) => {
     divGame.addEventListener("click", (e) => {
-        console.log(e.target.tagName)
         if (e.target.tagName != "A" && e.target.tagName != "I" && e.target.className != "icon-store") {
             const articulo = $(".ofertas-por-tienda").parent();
 
             if (articulo.length == 0) {
-                mostrarOfertas(divGame.id);
+                mostrarOfertas(divGame.id, dealCarrito);
             } else {
                 if (articulo.attr("id") != divGame.id) {
                     $(".ofertas-por-tienda").hide(300, () => {
@@ -116,15 +122,37 @@ const pressDivGame = (divGame) => {
     })
 }
 
-const pressAddToCart = (i, dealID) => {
+const pressAddToCart = (i, dealCarrito) => {
     i.addEventListener("click", () => {
-        let ofertas = JSON.parse(localStorage.getItem("ofertas") || "[]")
-        ofertas.push(dealID);
-        localStorage.setItem("ofertas", JSON.stringify(ofertas))
+        dealCarrito.storeIcon = i.parentNode.childNodes[0].childNodes[0].src;
+        dealCarrito.dealID = i.parentNode.id;
+        dealCarrito.price = parseFloat(i.parentNode.childNodes[1].childNodes[0].innerText.split("$")[1]);
+        dealCarrito.redirect = i.parentNode.childNodes[0].href;
+        dealCarrito.count = 1;
+        if (typeof (Storage) !== 'undefined') {
+            let carrito = JSON.parse(localStorage.getItem("carrito") || "[]")
+            if (carrito.length) {
+                carrito.forEach(oferta => {
+                    if (oferta.dealID == dealCarrito.dealID) {
+                        oferta.count++;
+                    } else {
+                        carrito.push(dealCarrito);
+                    }
+                })
+            } else {
+                carrito.push(dealCarrito);
+            }
+
+            localStorage.setItem("carrito", JSON.stringify(carrito))
+        } else {
+            let carrito = JSON.parse(sessionStorage.getItem("carrito") || "[]")
+            carrito.push(dealCarrito);
+            sessionStorage.setItem("carrito", JSON.stringify(carrito))
+        }
     })
 }
 
-const mostrarOfertas = (gameID) => {
+const mostrarOfertas = (gameID, dealCarrito) => {
     const divOfertas = document.createElement("div");
     divOfertas.className = "ofertas-por-tienda";
     divOfertas.style.display = "none";
@@ -133,6 +161,7 @@ const mostrarOfertas = (gameID) => {
             res.deals.forEach(deal => {
                 const divLine = document.createElement("div");
                 divLine.className = "line-deal";
+                divLine.setAttribute("id", deal.dealID);
 
                 const a = document.createElement("a");
                 let icon = document.createElement("img");
@@ -149,7 +178,7 @@ const mostrarOfertas = (gameID) => {
 
                 const i = document.createElement("i");
                 i.className = "fas fa-cart-plus";
-                pressAddToCart(i, deal.dealID);
+                pressAddToCart(i, dealCarrito);
 
                 const precio = document.createElement("div");
                 const spanPrecio = document.createElement("span");
