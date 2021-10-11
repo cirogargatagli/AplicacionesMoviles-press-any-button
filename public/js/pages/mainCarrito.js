@@ -17,19 +17,16 @@ export const mainCarrito = () => {
 }
 
 const createCarrito = () => {
-    let ofertasAgregadas = [];
     if (typeof (Storage) !== 'undefined') {
-        ofertasAgregadas = JSON.parse(localStorage.getItem("carrito"));
-    } else {
-        ofertasAgregadas = JSON.parse(sessionStorage.getItem("carrito"));
-    }
-    if (ofertasAgregadas) {
-        mostrarAgregadosAlCarrito(ofertasAgregadas);
-    } else {
-        let divOfertasAgregadas = document.querySelector(".ofertas");
-        let h4 = document.createElement("h4");
-        h4.innerText = "No agregaste ningún elemento al carro."
-        divOfertasAgregadas.append(h4)
+        let ofertasAgregadas = JSON.parse(localStorage.getItem("carrito"));
+        if (ofertasAgregadas) {
+            mostrarAgregadosAlCarrito(ofertasAgregadas);
+        } else {
+            let divOfertasAgregadas = document.querySelector(".ofertas");
+            let h4 = document.createElement("h4");
+            h4.innerText = "No agregaste ningún elemento al carro."
+            divOfertasAgregadas.append(h4)
+        }
     }
 }
 

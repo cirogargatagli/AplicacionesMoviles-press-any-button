@@ -20,6 +20,10 @@
     height: 80%;
 }
 
+.destacados h3{
+  margin: 0;
+}
+
 @keyframes cambio {
     0% {
       margin-left: 0;
