@@ -1,6 +1,7 @@
-import { getDeals } from "../api/apiPages.js";
+import { getDeals, getStores, redirectToDeal } from "../api/apiPages.js";
 import { mostrarLoader, quitarLoader } from "../components/loader.js";
 import { createPagination } from "../components/pagination.js";
+import { urlLogos } from "./mainBusqueda.js";
 
 const main = document.querySelector("main");
 
@@ -141,6 +142,10 @@ const createFilterAndSort = () => {
     return divOptions;
 }
 
+const pressRemoveFromCart = (i) => {
+
+}
+
 const createDeals = (arrayQuerys) => {
 
     let query = "";
@@ -181,17 +186,73 @@ const createDeals = (arrayQuerys) => {
 
                 let divGame = document.createElement("article");
                 divGame.className = "game"
-                divGame.setAttribute("id", deal.gameID)
+                divGame.setAttribute("id", deal.dealID)
                 divGame.setAttribute("name", deal.title)
-                divGame.append(img, divTitle, divPrecio)
+
+
+                const divDetalleOferta = document.createElement("div");
+                divDetalleOferta.className = "detalle-oferta";
+                divDetalleOferta.style.display = "none";
+                divDetalleOferta.innerHTML += `
+                    <span>★ ${deal.dealRating}</span>
+                `
+
+                const a = document.createElement("a");
+                let icon = document.createElement("img");
+                icon.className = "icon-store";
+                a.href = redirectToDeal + deal.dealID;
+                a.target = "_blank";
+                getStores().done(data => {
+                    let store = data.filter(store => store.storeID == deal.storeID)[0];
+                    icon.src = urlLogos + store.images.icon;
+                })
+                a.append(icon)
+
+                const i = document.createElement("i");
+                i.className = "fas fa-cart-plus";
+                pressRemoveFromCart(i);
+                divDetalleOferta.append(a, i);
+
+                divGame.append(img, divTitle, divPrecio, divDetalleOferta);
 
                 divGame.addEventListener("click", (e) => {
-                    if (e.target.tagName == "ARTICLE") {
+                    if (e.target.tagName != "A" && e.target.tagName != "I" && e.target.className != "icon-store") {
+                        let articulo = document.getElementById(divGame.id);
+                        articulo = $(articulo).find(".detalle-oferta");
+                        if (articulo.is(':visible')) {
+                            articulo.hide(300)
+                        } else {
+                            articulo.show(400);
+                            if (typeof (Storage) !== 'undefined') {
+                                let ofertaVisitada = {
+                                    dealID: divGame.id,
+                                    img: divGame.childNodes[0].src,
+                                    title: divGame.getAttribute("name"),
+                                    price: divGame.childNodes[2].childNodes[0].innerText.split("$")[1]
+                                }
+                                let visitados = JSON.parse(localStorage.getItem("visitados") || "[]");
+                                visitados.push(ofertaVisitada);
+                                localStorage.setItem("visitados", JSON.stringify(visitados))
+                            }
+                        }
+
+                        // if (articulo.length == 0) {
+                        //     $(".detalle-oferta").show(400);
+                        // } else {
+                        //     if (articulo.attr("id") != divGame.id) {
+                        //         $(".detalle-oferta").hide(300, () => {
+                        //             $(".detalle-oferta").remove();
+                        //             $(".detalle-oferta").show(400);
+                        //         });
+                        //     } else {
+                        //         $(".detalle-oferta").hide(300, () => {
+                        //             $(".detalle-oferta").remove();
+                        //         });
+                        //     }
+                        // }
 
                     }
                 })
-
-                mostrarDetalleOferta(divGame);
                 divOfertas.append(divGame)
             })
             createPagination(page, parseInt(request.getResponseHeader('x-total-page-count')) + 1);

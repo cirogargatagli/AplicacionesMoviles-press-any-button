@@ -109,3 +109,9 @@
 .order-by h5{
     margin:0;
 }
+
+.detalle-oferta{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+}

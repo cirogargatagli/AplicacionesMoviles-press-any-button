@@ -24,6 +24,10 @@
   margin: 0;
 }
 
+.visitados h3 {
+  margin: 0;
+}
+
 @keyframes cambio {
     0% {
       margin-left: 0;
