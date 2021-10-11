@@ -12,18 +12,22 @@ ul.pagination li {
 
 ul.pagination li a {
     color: rgb(253, 253, 253);
-    float: left;
-    padding: 8px 16px;
+    padding: 8px 5px;
     text-decoration: none;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 ul.pagination li a.active {
-    background-color: #ff0000e3;
-    color: white;
+    color: #ff0000e3;
     border-radius: 5px;
 }
 
 ul.pagination li a:hover:not(.active) {
-    background-color: rgba(255, 0, 0, 0.295);
+    color: rgba(226, 226, 226, 0.685);
+}
+
+.spanPuntos {
+    letter-spacing: 2px;
+    padding: 0px 3px;
 }
