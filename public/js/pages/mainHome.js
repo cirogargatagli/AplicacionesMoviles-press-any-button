@@ -15,15 +15,15 @@ export const mainHome = () => {
     </section>
     <section class="destacados">
         <h3>Destacados</h3>
-        <div class="games"></div>
+        <div class="ofertas"></div>
     </section>
     `
     mostrarDestacadas();
 }
 
 const mostrarDestacadas = () => {
-    const divDestacadas = document.querySelector(".games");
-    mostrarLoader("games")
+    const divDestacadas = document.querySelector(".ofertas");
+    mostrarLoader("ofertas")
     getDestacados()
         .done(destacadas => {
             destacadas.forEach(destacada => {
@@ -46,12 +46,12 @@ const mostrarDestacadas = () => {
                 let divGame = document.createElement("article");
                 divGame.className = "game"
                 divGame.setAttribute("id", destacada.gameID)
-                divGame.setAttribute("name", destacada.external)
+                divGame.setAttribute("name", destacada.title)
                 divGame.append(img, divTitle, divPrecio)
 
                 divDestacadas.append(divGame)
             });
-            quitarLoader("games")
+            quitarLoader("ofertas")
 
         })
         .fail()

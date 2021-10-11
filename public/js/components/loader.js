@@ -19,5 +19,4 @@ export const quitarLoader = (idPadre) => {
     if (divLoader) {
         divPadre.removeChild(divLoader)
     }
-
 }

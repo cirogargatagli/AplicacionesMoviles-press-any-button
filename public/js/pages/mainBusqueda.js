@@ -131,19 +131,23 @@ export const pressAddToCart = (i, dealCarrito) => {
         dealCarrito.count = 1;
         if (typeof (Storage) !== 'undefined') {
             let carrito = JSON.parse(localStorage.getItem("carrito") || "[]")
-            if (carrito.length) {
+            if (carrito.length > 0) {
+                let existeOferta = false;
                 carrito.forEach(oferta => {
                     if (oferta.dealID == dealCarrito.dealID) {
                         oferta.count++;
-                    } else {
-                        carrito.push(dealCarrito);
+                        existeOferta = true;
                     }
                 })
+                if (!existeOferta) {
+                    carrito.push(dealCarrito);
+                }
             } else {
                 carrito.push(dealCarrito);
             }
 
             localStorage.setItem("carrito", JSON.stringify(carrito))
+            alert("¡Se añadió correctamente el artículo al carrito!")
         }
     })
 }
@@ -186,13 +190,13 @@ const mostrarOfertas = (gameID, dealCarrito) => {
                 divOfertas.append(divLine);
             })
 
-            const divLine = document.createElement("div");
-            divLine.className = "cheapest-price-ever"
+            const divPrecioMasBajo = document.createElement("div");
+            divPrecioMasBajo.className = "cheapest-price-ever"
             const span = document.createElement("span");
             let fecha = new Date(res.cheapestPriceEver.date);
             span.innerText = "Precio más bajo: $" + res.cheapestPriceEver.price + " el " + fecha.getDate() + " de " + fecha.toLocaleString('default', { month: 'long' });
-            divLine.append(span);
-            divOfertas.append(divLine);
+            divPrecioMasBajo.append(span);
+            divOfertas.append(divPrecioMasBajo);
 
 
             document.getElementById(gameID).append(divOfertas);

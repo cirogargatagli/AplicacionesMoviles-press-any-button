@@ -6,6 +6,7 @@
     height: 100%;
     color: white;
     text-align: center;
+    padding: 30px;
 }
 
 .oferta{
@@ -51,7 +52,6 @@
     display: flex;
     justify-content: space-between;
     color: gray;
-    margin-bottom: 10%;
 }
 
 .options h5{

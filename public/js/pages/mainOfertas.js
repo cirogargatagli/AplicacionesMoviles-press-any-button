@@ -166,12 +166,33 @@ const createDeals = (arrayQuerys) => {
                 let img = document.createElement("img");
                 img.src = deal.thumb;
 
-                let divDeal = document.createElement("article");
-                divDeal.className = "oferta"
-                divDeal.setAttribute("id", deal.dealID)
-                divDeal.setAttribute("name", deal.title)
-                divDeal.append(img)
-                divOfertas.append(divDeal)
+                let divTitle = document.createElement("div");
+                divTitle.className = "titulo-juego"
+                const spanTitle = document.createElement("span");
+                spanTitle.innerText = deal.title;
+                divTitle.append(spanTitle)
+
+                let divPrecio = document.createElement("div");
+                divPrecio.className = "precio-bajo-juego"
+                const spanPrecio = document.createElement("span");
+                spanPrecio.innerText = "$" + deal.salePrice;
+                divPrecio.append(spanPrecio)
+
+
+                let divGame = document.createElement("article");
+                divGame.className = "game"
+                divGame.setAttribute("id", deal.gameID)
+                divGame.setAttribute("name", deal.title)
+                divGame.append(img, divTitle, divPrecio)
+
+                divGame.addEventListener("click", (e) => {
+                    if (e.target.tagName == "ARTICLE") {
+
+                    }
+                })
+
+                mostrarDetalleOferta(divGame);
+                divOfertas.append(divGame)
             })
             createPagination(page, parseInt(request.getResponseHeader('x-total-page-count')) + 1);
             quitarLoader("ofertas")
