@@ -25,7 +25,9 @@
     width: 20px;
     height: 20px;
     line-height: 20px;
-    font-size: 13px;
+    font-size: 14px;
     background-color: red;
     border-radius: 50%;
+    color: black;
+    font-weight: bold;
 }
