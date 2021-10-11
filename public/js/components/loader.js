@@ -16,5 +16,8 @@ const loader = () => {
 export const quitarLoader = (idPadre) => {
     const divPadre = document.querySelector("." + idPadre)
     const divLoader = document.getElementById("divLoader")
-    divPadre.removeChild(divLoader)
+    if (divLoader) {
+        divPadre.removeChild(divLoader)
+    }
+
 }

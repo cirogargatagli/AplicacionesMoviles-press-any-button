@@ -29,6 +29,10 @@ export const getDealsByGameID = (gameID) => {
     return get(urlGames + "id=" + gameID)
 }
 
+export const getDestacados = () => {
+    return get(urlDeals + "dealRating=10&pageSize=3");
+}
+
 const pageSize = () => {
     let queryMobile = "&pageSize=";
     if (screen.width < 768) {

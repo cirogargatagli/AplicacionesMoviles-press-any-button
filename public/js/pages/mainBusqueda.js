@@ -3,7 +3,7 @@ import { mostrarLoader, quitarLoader } from "../components/loader.js";
 
 
 const main = document.querySelector("main");
-const urlLogos = "https://www.cheapshark.com/";
+export const urlLogos = "https://www.cheapshark.com/";
 
 export const mainBusqueda = () => {
     const section = document.createElement("section");
@@ -122,7 +122,7 @@ const pressDivGame = (divGame, dealCarrito) => {
     })
 }
 
-const pressAddToCart = (i, dealCarrito) => {
+export const pressAddToCart = (i, dealCarrito) => {
     i.addEventListener("click", () => {
         dealCarrito.storeIcon = i.parentNode.childNodes[0].childNodes[0].src;
         dealCarrito.dealID = i.parentNode.id;
@@ -144,10 +144,6 @@ const pressAddToCart = (i, dealCarrito) => {
             }
 
             localStorage.setItem("carrito", JSON.stringify(carrito))
-        } else {
-            let carrito = JSON.parse(sessionStorage.getItem("carrito") || "[]")
-            carrito.push(dealCarrito);
-            sessionStorage.setItem("carrito", JSON.stringify(carrito))
         }
     })
 }
