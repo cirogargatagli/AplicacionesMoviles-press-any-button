@@ -13,17 +13,58 @@ export const mainHome = () => {
                 <li><img src="../img/carrousel/residentEvil.jpg" alt=""></li>
             </ul>
     </section>
-    <section class="destacados">
-        <h3>Destacados</h3>
-        <div class="ofertas"></div>
-    </section>
     `
+    mostrarVisitados();
     mostrarDestacadas();
+
+}
+
+const mostrarVisitados = () => {
+    const sectionVisitados = document.createElement("section");
+    sectionVisitados.className = "visitados"
+    const divVisitados = document.createElement("div");
+    divVisitados.className = "ofertas";
+    let visitados = JSON.parse(localStorage.getItem("visitados") || "[]")
+    if (visitados.length) {
+        let titulo = document.createElement("h3");
+        titulo.innerText = "Últimas visitas";
+        visitados.forEach(visitado => {
+            let img = document.createElement("img");
+            img.src = visitado.img;
+
+            let divTitle = document.createElement("div");
+            divTitle.className = "titulo-juego"
+            const spanTitle = document.createElement("span");
+            spanTitle.innerText = visitado.title;
+            divTitle.append(spanTitle)
+
+            let divPrecio = document.createElement("div");
+            divPrecio.className = "precio-bajo-juego"
+            const spanPrecio = document.createElement("span");
+            spanPrecio.innerText = "$" + visitado.price;
+            divPrecio.append(spanPrecio)
+
+
+            let divGame = document.createElement("article");
+            divGame.className = "game"
+            divGame.setAttribute("id", visitado.dealID)
+            divGame.setAttribute("name", visitado.title)
+            divGame.append(img, divTitle, divPrecio)
+
+            divVisitados.append(divGame)
+        })
+        sectionVisitados.append(titulo, divVisitados)
+        main.append(sectionVisitados)
+    }
 }
 
 const mostrarDestacadas = () => {
-    const divDestacadas = document.querySelector(".ofertas");
-    mostrarLoader("ofertas")
+    const sectionDestacados = document.createElement("section");
+    sectionDestacados.className = "destacados"
+    const divDestacadas = document.createElement("div");
+    divDestacadas.className = "ofertas";
+    let titulo = document.createElement("h3");
+    titulo.innerText = "Destacados";
     getDestacados()
         .done(destacadas => {
             destacadas.forEach(destacada => {
@@ -45,14 +86,17 @@ const mostrarDestacadas = () => {
 
                 let divGame = document.createElement("article");
                 divGame.className = "game"
-                divGame.setAttribute("id", destacada.gameID)
+                divGame.setAttribute("id", destacada.dealID)
                 divGame.setAttribute("name", destacada.title)
                 divGame.append(img, divTitle, divPrecio)
 
                 divDestacadas.append(divGame)
             });
-            quitarLoader("ofertas")
+            sectionDestacados.append(titulo, divDestacadas)
 
         })
-        .fail()
+        .fail(error => {
+            console.log(error)
+        })
+    main.append(sectionDestacados)
 }
