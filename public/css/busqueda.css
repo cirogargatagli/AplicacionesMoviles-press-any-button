@@ -154,6 +154,22 @@
     padding: 10px 10px;
 }
 
+.buttons-deal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fa-share-alt{
+    margin-right: 15px;
+    color: rgb(212, 211, 211);
+    transition: all 0.4s ease;
+}
+
+.fa-share-alt:hover{
+    transform: scale(1.4);
+}
+
 .fa-cart-plus{
     color: green;
     transition: all 0.4s ease;

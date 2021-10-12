@@ -103,10 +103,17 @@ const createTienda = (arrayQuerys) => {
                 })
                 a.append(icon);
 
+                const divBotones = document.createElement("div");
+                divBotones.className = "deal-buttons";
+                const iShare = document.createElement("i");
+                iShare.className = "fas fa-share-alt";
                 const i = document.createElement("i");
                 i.className = "fas fa-cart-plus";
                 pressRemoveFromCart(i);
-                divDetalleOferta.append(a, i);
+
+                divBotones.append(iShare, i);
+
+                divDetalleOferta.append(a, divBotones);
 
                 divGame.append(img, divTitle, divPrecio, divDetalleOferta);
 

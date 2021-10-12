@@ -176,16 +176,22 @@ const mostrarOfertas = (gameID, dealCarrito) => {
 
                 a.append(icon)
 
+                const divBotones = document.createElement("div");
+                divBotones.className = "deal-buttons";
+                const iShare = document.createElement("i");
+                iShare.className = "fas fa-share-alt";
                 const i = document.createElement("i");
                 i.className = "fas fa-cart-plus";
                 pressAddToCart(i, dealCarrito);
+
+                divBotones.append(iShare, i);
 
                 const precio = document.createElement("div");
                 const spanPrecio = document.createElement("span");
                 spanPrecio.innerText = "$" + deal.price;
                 precio.append(spanPrecio);
 
-                divLine.append(a, precio, i);
+                divLine.append(a, precio, divBotones);
 
                 divOfertas.append(divLine);
             })
