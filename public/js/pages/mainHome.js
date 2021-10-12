@@ -26,32 +26,36 @@ const mostrarVisitados = () => {
     divVisitados.className = "ofertas";
     let visitados = JSON.parse(localStorage.getItem("visitados") || "[]")
     if (visitados.length) {
+        visitados = visitados.reverse();
         let titulo = document.createElement("h3");
         titulo.innerText = "Últimas visitas";
-        visitados.forEach(visitado => {
-            let img = document.createElement("img");
-            img.src = visitado.img;
 
-            let divTitle = document.createElement("div");
-            divTitle.className = "titulo-juego"
-            const spanTitle = document.createElement("span");
-            spanTitle.innerText = visitado.title;
-            divTitle.append(spanTitle)
+        visitados.forEach((visitado, index) => {
+            if (index <= 2) {
+                let img = document.createElement("img");
+                img.src = visitado.img;
 
-            let divPrecio = document.createElement("div");
-            divPrecio.className = "precio-bajo-juego"
-            const spanPrecio = document.createElement("span");
-            spanPrecio.innerText = "$" + visitado.price;
-            divPrecio.append(spanPrecio)
+                let divTitle = document.createElement("div");
+                divTitle.className = "titulo-juego"
+                const spanTitle = document.createElement("span");
+                spanTitle.innerText = visitado.title;
+                divTitle.append(spanTitle)
+
+                let divPrecio = document.createElement("div");
+                divPrecio.className = "precio-bajo-juego"
+                const spanPrecio = document.createElement("span");
+                spanPrecio.innerText = "$" + visitado.price;
+                divPrecio.append(spanPrecio)
 
 
-            let divGame = document.createElement("article");
-            divGame.className = "game"
-            divGame.setAttribute("id", visitado.dealID)
-            divGame.setAttribute("name", visitado.title)
-            divGame.append(img, divTitle, divPrecio)
+                let divGame = document.createElement("article");
+                divGame.className = "game"
+                divGame.setAttribute("id", visitado.dealID)
+                divGame.setAttribute("name", visitado.title)
+                divGame.append(img, divTitle, divPrecio)
 
-            divVisitados.append(divGame)
+                divVisitados.append(divGame)
+            }
         })
         sectionVisitados.append(titulo, divVisitados)
         main.append(sectionVisitados)

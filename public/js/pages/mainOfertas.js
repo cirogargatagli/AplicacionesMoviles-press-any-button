@@ -215,6 +215,40 @@ const createDeals = (arrayQuerys) => {
 
                 divGame.append(img, divTitle, divPrecio, divDetalleOferta);
 
+                let ofertaVisitada = {
+                    dealID: divGame.id,
+                    img: divGame.childNodes[0].src,
+                    title: divGame.getAttribute("name"),
+                    price: divGame.childNodes[2].childNodes[0].innerText.split("$")[1],
+                    count: 1
+                }
+
+                i.addEventListener("click", () => {
+                    if (typeof (Storage) !== 'undefined') {
+                        ofertaVisitada.storeIcon = divGame.childNodes[3].childNodes[3].childNodes[0].src;
+                        ofertaVisitada.redirect = divGame.childNodes[3].childNodes[3].href;
+                        let carrito = JSON.parse(localStorage.getItem("carrito") || "[]")
+                        if (carrito.length > 0) {
+                            let existeOferta = false;
+                            carrito.forEach(oferta => {
+                                if (oferta.dealID == ofertaVisitada.dealID) {
+                                    oferta.count++;
+                                    existeOferta = true;
+                                }
+                            })
+                            if (!existeOferta) {
+                                carrito.push(ofertaVisitada);
+                            }
+                        } else {
+                            carrito.push(ofertaVisitada);
+                        }
+
+                        localStorage.setItem("carrito", JSON.stringify(carrito))
+                        alert("¡Se añadió correctamente el artículo al carrito!")
+                    }
+                })
+
+
                 divGame.addEventListener("click", (e) => {
                     if (e.target.tagName != "A" && e.target.tagName != "I" && e.target.className != "icon-store") {
                         let articulo = document.getElementById(divGame.id);
@@ -224,33 +258,11 @@ const createDeals = (arrayQuerys) => {
                         } else {
                             articulo.show(400);
                             if (typeof (Storage) !== 'undefined') {
-                                let ofertaVisitada = {
-                                    dealID: divGame.id,
-                                    img: divGame.childNodes[0].src,
-                                    title: divGame.getAttribute("name"),
-                                    price: divGame.childNodes[2].childNodes[0].innerText.split("$")[1]
-                                }
                                 let visitados = JSON.parse(localStorage.getItem("visitados") || "[]");
                                 visitados.push(ofertaVisitada);
                                 localStorage.setItem("visitados", JSON.stringify(visitados))
                             }
                         }
-
-                        // if (articulo.length == 0) {
-                        //     $(".detalle-oferta").show(400);
-                        // } else {
-                        //     if (articulo.attr("id") != divGame.id) {
-                        //         $(".detalle-oferta").hide(300, () => {
-                        //             $(".detalle-oferta").remove();
-                        //             $(".detalle-oferta").show(400);
-                        //         });
-                        //     } else {
-                        //         $(".detalle-oferta").hide(300, () => {
-                        //             $(".detalle-oferta").remove();
-                        //         });
-                        //     }
-                        // }
-
                     }
                 })
                 divOfertas.append(divGame)
