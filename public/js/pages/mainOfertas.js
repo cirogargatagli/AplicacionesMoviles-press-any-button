@@ -142,10 +142,6 @@ const createFilterAndSort = () => {
     return divOptions;
 }
 
-const pressRemoveFromCart = (i) => {
-
-}
-
 const createDeals = (arrayQuerys) => {
 
     let query = "";
@@ -210,7 +206,6 @@ const createDeals = (arrayQuerys) => {
 
                 const i = document.createElement("i");
                 i.className = "fas fa-cart-plus";
-                pressRemoveFromCart(i);
                 divDetalleOferta.append(a, i);
 
                 divGame.append(img, divTitle, divPrecio, divDetalleOferta);

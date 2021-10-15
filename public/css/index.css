@@ -61,14 +61,12 @@ header {
 
 .hamburguesa{
     height: 50px;
-    width: 10%;
     margin-right: 15px;
     cursor: pointer;
 }
 
 .hamburguesa img{
     height: 100%;
-    width: 100%;
 }
 
 .menu {
