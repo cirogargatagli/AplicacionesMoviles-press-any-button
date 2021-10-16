@@ -34,11 +34,13 @@ export const getDestacados = () => {
 }
 
 const pageSize = () => {
-    let queryMobile = "&pageSize=";
+    let queryPageSize = "&pageSize=";
     if (screen.width < 768) {
-        return queryMobile += "10";
+        return queryPageSize += "10";
     }
     if (screen.width < 1024) {
-        return queryMobile += "20";
+        return queryPageSize += "20";
     }
+
+    return queryPageSize += "40";
 }
