@@ -32,3 +32,20 @@
     border-color: rgba(255, 255, 255, 0.13);
     box-shadow: 2px 2px 2px 1px rgba(255, 0, 0, 0.3);
 }
+
+@media (min-width: 768px) {
+    .map{
+        height: 350px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .map{
+        height: 400px;
+    }
+}
+@media (min-width: 1200px) {
+    .map{
+        height: 450px;
+    }
+}

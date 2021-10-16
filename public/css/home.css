@@ -2,6 +2,7 @@
     width: 100%;
     margin: auto;
     overflow: hidden;
+    height: auto;
 }
 .slider ul {
     display: flex;
@@ -52,5 +53,11 @@
     }
     100% {
       margin-left: -300%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .slider{
+      width: 80%;
     }
   }

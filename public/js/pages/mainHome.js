@@ -16,7 +16,6 @@ export const mainHome = () => {
     `
     mostrarVisitados();
     mostrarDestacadas();
-
 }
 
 const mostrarVisitados = () => {
@@ -26,7 +25,6 @@ const mostrarVisitados = () => {
     divVisitados.className = "ofertas";
     let visitados = JSON.parse(localStorage.getItem("visitados") || "[]")
     if (visitados.length) {
-        visitados = visitados.reverse();
         let titulo = document.createElement("h3");
         titulo.innerText = "Últimas visitas";
 
@@ -64,7 +62,7 @@ const mostrarVisitados = () => {
 
 const mostrarDestacadas = () => {
     const sectionDestacados = document.createElement("section");
-    sectionDestacados.className = "destacados"
+    sectionDestacados.className = "destacados";
     const divDestacadas = document.createElement("div");
     divDestacadas.className = "ofertas";
     let titulo = document.createElement("h3");
