@@ -14,18 +14,22 @@ const itemsMenu = document.querySelectorAll(".item-menu-enlace")
 const toggleIconsMenu = (id) => {
     $(".icon-active").toggleClass("icon-active")
     $("#" + id).toggleClass("icon-active")
+    $("#" + id + "-desktop").toggleClass("icon-active")
 }
-
 const changePage = () => {
     let localizacion = location.hash.split("#")[1];
     $("main").empty();
     window.scrollTo(0, 0)
     if (localizacion) {
+        if ($(".carrito-active").length) {
+            $(".carrito").toggleClass("carrito-active")
+        }
         toggleIconsMenu(localizacion.split("?")[0])
         if (localizacion == "Home") {
             mainHome();
         }
         if (localizacion == "Carrito") {
+            $(".carrito").toggleClass("carrito-active")
             mainCarrito();
         }
         if (localizacion.includes("Ofertas")) {
@@ -48,6 +52,9 @@ const changePage = () => {
         }
     }
 }
+window.addEventListener('resize', () => {
+    $(".menu").slideUp(1)
+});
 
 if ($(".hamburguesa").length > 0) {
     const menu = $(".menu")

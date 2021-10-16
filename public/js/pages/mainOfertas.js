@@ -143,14 +143,6 @@ const createFilterAndSort = () => {
     return divOptions;
 }
 
-const pressRemoveFromCart = (i) => {
-
-}
-
-export let shareDeal = {
-
-}
-
 const createDeals = (arrayQuerys) => {
 
     let query = "";
@@ -223,13 +215,13 @@ const createDeals = (arrayQuerys) => {
                 aShare.append(iShare);
                 const i = document.createElement("i");
                 i.className = "fas fa-cart-plus";
-                pressRemoveFromCart(i);
 
                 obtenerOferta(aShare, divGame);
 
                 divBotones.append(aShare, i);
 
                 divDetalleOferta.append(a, divBotones);
+
 
                 divGame.append(img, divTitle, divPrecio, divDetalleOferta);
 
