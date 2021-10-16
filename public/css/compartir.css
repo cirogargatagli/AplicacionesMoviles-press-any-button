@@ -1,0 +1,127 @@
+.formulario{
+    margin-bottom: 20px;
+    margin-left: 15px;
+    transition: all 0.4s ease;
+    box-shadow: 2px 2px 2px 2px rgb(179 179 179 / 34%);
+    border-radius: 5px;
+    border-color: #34495e;
+    overflow: hidden;
+    background-color: rgb(20, 20, 20);
+    width: 100%;
+    transition: all 250ms;
+    margin: auto;
+    padding: 2% 2% 1% 2%;
+}
+
+.item-compartir{
+    width: 95%;
+    margin-left: 2%;
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+.item-compartir input{
+    width: 100%;
+    height: 100%;
+    background: none;
+    color: white;
+    padding-top: 20px;
+    border: none;
+    outline: 0px;
+}
+
+.item-compartir .lbl-texto{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid #b1afaf;
+}
+
+.item-compartir .lbl-texto::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 100%;
+    border-bottom: 2px solid rgb(223, 5, 5);
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+.text-nomb{
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    transition: all 0.3s ease;
+    color: #b1afaf;
+}
+.item-compartir input:focus + .lbl-texto .text-nomb,
+.item-compartir input:valid + .lbl-texto .text-nomb{
+    transform: translateY(-150%);
+    font-size: 12px;
+    color: rgb(223, 5, 5);
+}
+.item-compartir input:focus + .lbl-texto::after,
+.item-compartir input:valid + .lbl-texto::after{
+    transform: translateX(0%);
+}
+
+.datos-email {
+    margin-top: 30px;
+}
+
+.container-comentario{
+    margin-top: 30px;
+    height: 120px;
+}
+
+.comentario-compartir{
+    margin: auto;
+    width: 100%;
+    margin-left: 1%;
+    margin-top: 5%;
+ }
+
+.comentario-compartir textarea{
+    color: black;
+    border-radius: 7px;
+    border: 1px solid #b1afaf;
+    width: 90%;
+ }
+
+.comentario-compartir textarea:focus{
+    border: none;
+    border: 2px solid rgb(223, 5, 5);
+}
+
+.button{
+    cursor: pointer;
+    width: 100px;
+    height: 35px;   
+    background-color: rgb(223, 5, 5);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(223, 5, 5);
+    border-radius: 20px;
+    font-size: 15px;
+    margin-left: 1%;
+    margin-bottom: 20px;
+}
+
+.error{
+    margin: 0 auto;
+    display: block;
+    width: 146px;
+    font-size: 13px;
+    color: red;
+    margin-left: 1%;
+    margin-top: 5px;
+}
+
+.ocultar-error {
+    display: none;
+}
