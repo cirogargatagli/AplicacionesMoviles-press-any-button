@@ -1,6 +1,7 @@
 import { getDeals, getStores, redirectToDeal } from "../api/apiPages.js";
 import { mostrarLoader, quitarLoader } from "../components/loader.js";
 import { createPagination } from "../components/pagination.js";
+import { mainCompartir, obtenerOferta } from "./mainCompartir.js";
 import { urlLogos } from "./mainBusqueda.js";
 
 const main = document.querySelector("main");
@@ -204,9 +205,23 @@ const createDeals = (arrayQuerys) => {
                 })
                 a.append(icon)
 
+                const divBotones = document.createElement("div");
+                divBotones.className = "deal-buttons";
+                const aShare = document.createElement("a");
+                aShare.href = "#Compartir";
+                aShare.setAttribute = ("data-hash", "Compartir");
+                const iShare = document.createElement("i");
+                iShare.className = "fas fa-share-alt";
+                aShare.append(iShare);
                 const i = document.createElement("i");
                 i.className = "fas fa-cart-plus";
-                divDetalleOferta.append(a, i);
+
+                obtenerOferta(aShare, divGame);
+
+                divBotones.append(aShare, i);
+
+                divDetalleOferta.append(a, divBotones);
+
 
                 divGame.append(img, divTitle, divPrecio, divDetalleOferta);
 
@@ -215,13 +230,13 @@ const createDeals = (arrayQuerys) => {
                     img: divGame.childNodes[0].src,
                     title: divGame.getAttribute("name"),
                     price: divGame.childNodes[2].childNodes[0].innerText.split("$")[1],
+                    storeIcon: divGame.childNodes[3].childNodes[3].childNodes[0].src,
+                    redirect: divGame.childNodes[3].childNodes[3].href,
                     count: 1
                 }
 
                 i.addEventListener("click", () => {
                     if (typeof (Storage) !== 'undefined') {
-                        ofertaVisitada.storeIcon = divGame.childNodes[3].childNodes[3].childNodes[0].src;
-                        ofertaVisitada.redirect = divGame.childNodes[3].childNodes[3].href;
                         let carrito = JSON.parse(localStorage.getItem("carrito") || "[]")
                         if (carrito.length > 0) {
                             let existeOferta = false;

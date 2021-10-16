@@ -5,6 +5,7 @@ import { mainHome } from "./pages/mainHome.js";
 import { mainDeals } from "./pages/mainOfertas.js";
 import { mainTienda } from "./pages/mainTienda.js";
 import { mainStores } from "./pages/mainTiendas.js";
+import { mainCompartir } from "./pages/mainCompartir.js";
 import { getQuerys } from "./utils/querysURLUtils.js";
 
 const main = document.querySelector("main")
@@ -45,6 +46,9 @@ const changePage = () => {
         }
         if (localizacion.includes("Busqueda")) {
             mainBusqueda();
+        }
+        if (localizacion.includes("Compartir")) {
+            mainCompartir();
         }
     }
 }
