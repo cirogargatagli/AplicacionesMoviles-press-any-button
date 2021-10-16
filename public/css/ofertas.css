@@ -123,4 +123,8 @@
     .titulo-filtros{
         width: 170px;
     }
+
+    .options {
+        padding: 0px 30px;
+    }
 }

@@ -13,7 +13,7 @@
 .div-texto{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
 }
 
 .icon-store{
@@ -26,7 +26,7 @@
     height: 20px;
     line-height: 20px;
     font-size: 14px;
-    background-color: red;
+    background-color: rgb(223, 5, 5);
     border-radius: 50%;
     color: black;
     font-weight: bold;
@@ -47,12 +47,13 @@
     align-items: center;
 }
 
-.fa-plus-square{
-    color: green;
+.fa-plus, .fa-minus{
+    font-size: 13px;
+    color: gray;
 }
 
 .fa-times-circle{
-    color: red;
+    color: rgb(223, 5, 5);
     text-align: center;
     font-size: 20px;
 }

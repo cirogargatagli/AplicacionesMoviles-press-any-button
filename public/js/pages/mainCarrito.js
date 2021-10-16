@@ -69,12 +69,12 @@ const mostrarAgregadosAlCarrito = (ofertasAgregadas) => {
         let divCantidad = document.createElement("div");
         divCantidad.className = "div-cantidad"
         let iconMinus = document.createElement("i");
-        iconMinus.className = "fas fa-minus-square";
+        iconMinus.className = "fas fa-minus";
         let spanCantidad = document.createElement("span");
         spanCantidad.className = "span-cantidad";
         spanCantidad.innerText = oferta.count;
         let iconPlus = document.createElement("i");
-        iconPlus.className = "fas fa-plus-square";
+        iconPlus.className = "fas fa-plus";
         divCantidad.append(iconMinus, spanCantidad, iconPlus);
 
         changeCount(iconMinus, false);
