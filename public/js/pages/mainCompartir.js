@@ -3,15 +3,13 @@ let shareDeal = {};
 export const obtenerOferta = (aShare, divGame, search = false) => {
     aShare.addEventListener("click", (e) => {
         if(search){
-            console.log(e.target.parentNode.parentNode.parentNode);
-            // shareDeal = {
-            //     dealID: divGame.id,
-            //     title: divGame.getAttribute("name"),
-            //     price: divGame.childNodes[2].childNodes[0].innerText.split("$")[1],
-            //     storeIcon: divGame.childNodes[3].childNodes[3].childNodes[0].src,
-            //     redirect: divGame.childNodes[3].childNodes[3].href,
-            //     count: 1
-            // }
+            let div = e.target.parentNode.parentNode.parentNode;
+            shareDeal = {
+                dealID: div.id,
+                title: div.parentNode.parentNode.childNodes[1].childNodes[0].innerText,
+                price: div.childNodes[1].childNodes[0].innerText.split("$")[1],
+                redirect: div.childNodes[0].href,
+            }
         } else {
             shareDeal = {
                 dealID: divGame.id,
@@ -45,6 +43,12 @@ export const mainCompartir = () => {
     section.append(titulo, subtitulo);
     section.innerHTML += form;
     main.append(section);
+    
+    if(shareDeal.rating){
+        document.getElementById('div-rating').style.display = "flex";
+    } else {
+        document.getElementById('div-rating').style.display = "none";
+    }
 
     let email = document.getElementById('email');
     email.addEventListener('blur', function (event) {
@@ -89,9 +93,17 @@ export const mainCompartir = () => {
 }
 
 const createFormulario = (deal) => {
-    const texto = '¡Hola! Te envío el juego ' + deal.title + ' que está en oferta a $' + deal.price + 
+    let texto = "";
+    
+    if(deal.rating){
+        texto = '¡Hola! Te envío el juego ' + deal.title + ' que está en oferta a $' + deal.price + 
         '.\nTiene una puntuación de ' + deal.rating + 
         '!\nAprovecha a comprarlo antes de que se termine la oferta. \nTe dejo el link de la tienda: ' + deal.redirect;
+    } else {
+        texto = '¡Hola! Te envío el juego ' + deal.title + ' que está en oferta a $' + deal.price + 
+        '!\nAprovecha a comprarlo antes de que se termine la oferta. \nTe dejo el link de la tienda: ' + deal.redirect;
+    }
+    
 
     const formulario = `
         <form id="form-compartir" class="formulario">
@@ -116,8 +128,8 @@ const createFormulario = (deal) => {
                         <span class="text-nomb">Link</span>
                     </label>
                 </div>
-                <div class="item-compartir">
-                    <input type="text" id="rating" value = "${deal.rating}" required>
+                <div id="div-rating" class="item-compartir">
+                    <input type="text" id="rating" value = "${deal.rating ? deal.rating : null}" required>
                     <label for="rating" class="lbl-texto">
                         <span class="text-nomb">Rating</span>
                     </label>
