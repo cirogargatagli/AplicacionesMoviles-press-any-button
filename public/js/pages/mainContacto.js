@@ -30,10 +30,10 @@ export const mainContact = () => {
     iconLinkedinCiro.setAttribute("class", "fab fa-linkedin linkedin-icon");
     const aLinkedinCiro = document.createElement("a");
     aLinkedinCiro.href = "https://linkedin.com/in/ciro-gargatagli";
-    aLinkedinCiro.innerHTML = "Ver Perfil";
     aLinkedinCiro.target = "_blank";
+    aLinkedinCiro.append(iconLinkedinCiro);
 
-    divlinkedinCiro.append(iconLinkedinCiro,aLinkedinCiro);
+    divlinkedinCiro.append(aLinkedinCiro);
     
     contactoCiro.append(imagenCiro, divTextoCiro, divlinkedinCiro);
 
@@ -57,10 +57,10 @@ export const mainContact = () => {
     iconLinkedinDamian.setAttribute("class", "fab fa-linkedin linkedin-icon");
     const aLinkedinDamian = document.createElement("a");
     aLinkedinDamian.href = "https://linkedin.com/in/damian-djirikian-921171b9";
-    aLinkedinDamian.innerHTML = "Ver Perfil";
     aLinkedinDamian.target = "_blank";
+    aLinkedinDamian.append(iconLinkedinDamian);
 
-    divlinkedinDamian.append(iconLinkedinDamian, aLinkedinDamian);
+    divlinkedinDamian.append(aLinkedinDamian);
 
     contactoDamian.append(imagenDamian, divTextoDamian, divlinkedinDamian);
 

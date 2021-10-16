@@ -112,10 +112,6 @@ header {
     border-bottom: 1px solid;
 }
 
-.item-menu-enlace:active{
-    background-color: rgba(255, 0, 0, 0.24);
-}
-
 .item-menu-enlace img {
     width: 40px;
     height: 40px;
@@ -214,6 +210,9 @@ footer {
     }
     .menu-desktop{
         display: flex;
+    }
+    .logo{
+        margin-left: 70px;
     }
     .hamburguesa{
         display: none;

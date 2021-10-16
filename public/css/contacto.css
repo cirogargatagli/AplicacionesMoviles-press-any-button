@@ -1,15 +1,16 @@
 .contactos{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     width: 100%;
 }
 
 .contacto-desarrollador{
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    width: 100%;
+    margin-bottom: 30px;
 }
 
 .foto{
@@ -20,6 +21,7 @@
 }
 
 .linkedin-icon{
+    font-size: 25px;
     color: rgb(10, 102, 194);
 }
 
