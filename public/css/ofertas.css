@@ -73,16 +73,15 @@
 .filtros{
     display: none;
     margin-top: 7px;
+    width: 135px;
 }
 
 .titulo-filtros{
     display: flex;
     width: 100%;
     justify-content: space-between;
+    cursor: pointer;
 }
-/* .fa-chevron-down{
-    margin-left: 40px;
-} */
 
 .span-filtros{
     font-size: 0.83em;
@@ -94,6 +93,10 @@
     color: gray;
     height: 50%;
     display: flex;
+}
+
+#sort {
+    cursor: pointer;
 }
 
 .order-by select{
@@ -114,4 +117,10 @@
     display: flex;
     justify-content: space-between;
     padding: 15px 25px;
+}
+
+@media (min-width: 480px) {
+    .titulo-filtros{
+        width: 170px;
+    }
 }

@@ -29,7 +29,7 @@ const sortPagination = (pageActualString, lastPage) => {
     a.setAttribute("href", newHREF(1));
     a.innerHTML = 1;
     liInicio.append(a);
-    
+
     const liSpanInicio = document.createElement("li");
     const spanInicio = document.createElement("span");
     spanInicio.className = "spanPuntos";
@@ -44,15 +44,15 @@ const sortPagination = (pageActualString, lastPage) => {
     a1.innerHTML = a1Page;
     li1.append(a1);
     pageActual <= 2 ? li1.style.display = "none" : li1.style.display = "inline"
-    
+
     const li2 = document.createElement("li");
     const a2 = document.createElement("a");
     a2.setAttribute("href", newHREF(pageActual))
     a2.innerHTML = pageActual;
     li2.append(a2);
     inicio ? li2.style.display = "none" : li2.style.display = "inline"
-    
-    if(inicio){
+
+    if (inicio) {
         a.className = 'active';
         li1.style.display = 'none';
     } else {
@@ -80,12 +80,12 @@ const sortPagination = (pageActualString, lastPage) => {
     a4.innerHTML = a4Page;
     li4.append(a4);
 
-    if(!fin && diferencia == 1){
+    if (!fin && diferencia == 1) {
         li3.style.display = "none";
         liSpanFinal.style.display = "none";
     }
 
-    if(!fin && diferencia == 2){
+    if (!fin && diferencia == 2) {
         liSpanFinal.style.display = "none";
     }
 
@@ -96,7 +96,7 @@ const sortPagination = (pageActualString, lastPage) => {
     liSiguiente.append(aSiguiente);
     fin ? liSiguiente.style.display = "none" : liSiguiente.style.display = "inline"
 
-    fin 
+    fin
         ? ul.append(liAnterior, li4, liSpanInicio, li3, li2)
         : ul.append(liAnterior, liInicio, liSpanInicio, li1, li2, li3, liSpanFinal, li4, liSiguiente)
 
