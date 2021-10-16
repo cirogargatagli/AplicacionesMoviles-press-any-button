@@ -1,6 +1,7 @@
 import { getDealsByStoreID, getStores, redirectToDeal } from "../api/apiPages.js";
 import { mostrarLoader, quitarLoader } from "../components/loader.js";
 import { createPagination } from "../components/pagination.js";
+import { addVisitado } from "../utils/visitadosUtils.js";
 import { urlLogos } from "./mainBusqueda.js";
 
 const main = document.querySelector("main")
@@ -123,7 +124,7 @@ const createTienda = (arrayQuerys) => {
                         ofertaVisitada.storeIcon = divGame.childNodes[3].childNodes[3].childNodes[0].src;
                         ofertaVisitada.redirect = divGame.childNodes[3].childNodes[3].href;
                         let carrito = JSON.parse(localStorage.getItem("carrito") || "[]")
-                        if (carrito.length > 0) {
+                        if (carrito.length > 1) {
                             let existeOferta = false;
                             carrito.forEach(oferta => {
                                 if (oferta.dealID == ofertaVisitada.dealID) {
@@ -151,17 +152,13 @@ const createTienda = (arrayQuerys) => {
                             articulo.hide(300)
                         } else {
                             articulo.show(400);
-                            if (typeof (Storage) !== 'undefined') {
-                                let ofertaVisitada = {
-                                    dealID: divGame.id,
-                                    img: divGame.childNodes[0].src,
-                                    title: divGame.getAttribute("name"),
-                                    price: divGame.childNodes[2].childNodes[0].innerText.split("$")[1]
-                                }
-                                let visitados = JSON.parse(localStorage.getItem("visitados") || "[]");
-                                visitados.push(ofertaVisitada);
-                                localStorage.setItem("visitados", JSON.stringify(visitados))
+                            let ofertaVisitada = {
+                                dealID: divGame.id,
+                                img: divGame.childNodes[0].src,
+                                title: divGame.getAttribute("name"),
+                                price: divGame.childNodes[2].childNodes[0].innerText.split("$")[1]
                             }
+                            addVisitado(ofertaVisitada);
                         }
                     }
                 })

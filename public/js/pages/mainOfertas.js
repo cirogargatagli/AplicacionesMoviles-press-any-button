@@ -1,6 +1,7 @@
 import { getDeals, getStores, redirectToDeal } from "../api/apiPages.js";
 import { mostrarLoader, quitarLoader } from "../components/loader.js";
 import { createPagination } from "../components/pagination.js";
+import { addVisitado } from "../utils/visitadosUtils.js";
 import { urlLogos } from "./mainBusqueda.js";
 
 const main = document.querySelector("main");
@@ -34,7 +35,6 @@ const changeValueSelect = () => {
         let valueSort = querySort[0].split("=")[1]
         document.getElementById('sort').value = valueSort;
     }
-
 }
 
 const changeCheckFilter = () => {
@@ -252,11 +252,7 @@ const createDeals = (arrayQuerys) => {
                             articulo.hide(300)
                         } else {
                             articulo.show(400);
-                            if (typeof (Storage) !== 'undefined') {
-                                let visitados = JSON.parse(localStorage.getItem("visitados") || "[]");
-                                visitados.push(ofertaVisitada);
-                                localStorage.setItem("visitados", JSON.stringify(visitados))
-                            }
+                            addVisitado(ofertaVisitada);
                         }
                     }
                 })
