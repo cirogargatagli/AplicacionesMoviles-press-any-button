@@ -1,9 +1,14 @@
 import { getDealsByGameID, getGameByTitle, getStores, redirectToDeal } from "../api/apiPages.js";
 import { mostrarLoader, quitarLoader } from "../components/loader.js";
+import { obtenerOferta } from "./mainCompartir.js";
 
 
 const main = document.querySelector("main");
 export const urlLogos = "https://www.cheapshark.com/";
+
+export let shareDealSearch = {
+
+}
 
 export const mainBusqueda = () => {
     const section = document.createElement("section");
@@ -178,13 +183,19 @@ const mostrarOfertas = (gameID, dealCarrito) => {
 
                 const divBotones = document.createElement("div");
                 divBotones.className = "deal-buttons";
+                const aShare = document.createElement("a");
+                aShare.href = "#Compartir";
+                aShare.setAttribute = ("data-hash", "Compartir");
                 const iShare = document.createElement("i");
                 iShare.className = "fas fa-share-alt";
+                aShare.append(iShare);
                 const i = document.createElement("i");
                 i.className = "fas fa-cart-plus";
                 pressAddToCart(i, dealCarrito);
 
-                divBotones.append(iShare, i);
+                obtenerOferta(aShare, divLine, true);
+
+                divBotones.append(aShare, i);
 
                 const precio = document.createElement("div");
                 const spanPrecio = document.createElement("span");

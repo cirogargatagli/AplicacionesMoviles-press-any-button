@@ -2,12 +2,17 @@ import { getDealsByStoreID, getStores, redirectToDeal } from "../api/apiPages.js
 import { mostrarLoader, quitarLoader } from "../components/loader.js";
 import { createPagination } from "../components/pagination.js";
 import { urlLogos } from "./mainBusqueda.js";
+import { obtenerOferta } from "./mainCompartir.js";
 
 const main = document.querySelector("main")
 
 const urlImages = "https://www.cheapshark.com/"
 
 const pressRemoveFromCart = (i) => {
+
+}
+
+export let shareDealStore = {
 
 }
 
@@ -105,13 +110,19 @@ const createTienda = (arrayQuerys) => {
 
                 const divBotones = document.createElement("div");
                 divBotones.className = "deal-buttons";
+                const aShare = document.createElement("a");
+                aShare.href = "#Compartir";
+                aShare.setAttribute = ("data-hash", "Compartir");
                 const iShare = document.createElement("i");
                 iShare.className = "fas fa-share-alt";
+                aShare.append(iShare);
                 const i = document.createElement("i");
                 i.className = "fas fa-cart-plus";
                 pressRemoveFromCart(i);
 
-                divBotones.append(iShare, i);
+                obtenerOferta(aShare, divGame);
+
+                divBotones.append(aShare, i);
 
                 divDetalleOferta.append(a, divBotones);
 
