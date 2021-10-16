@@ -34,7 +34,9 @@ export const createStores = () => {
                     divStore.setAttribute("id", store.storeID)
                     divStore.setAttribute("name", store.storeName)
                     divStore.append(a)
-                    tiendas.append(divStore)
+                    if (tiendas) {
+                        tiendas.append(divStore)
+                    }
                 }
             })
             quitarLoader("tiendas");
