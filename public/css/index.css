@@ -198,6 +198,10 @@ footer {
     width: 22px;
 }
 
+.publicidad{
+    display: none;
+}
+
 @media (min-width: 768px) {
     .contacto{
         width: 18%;
@@ -232,7 +236,23 @@ footer {
     .copy{
         font-size: 15px;
     }
-    
+    .contenedor-main{
+        display: flex;
+        width: 100%;
+    }
+    main{
+        width: 84.2%;
+    }
+    .publicidad{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        width: 15.8%;
+        margin-top: 4px;
+    }
+    .publicidad a img{
+        width: 100%;
+    }
 }
 
 @media (min-width: 1200px) {
