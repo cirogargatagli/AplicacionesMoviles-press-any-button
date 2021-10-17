@@ -71,7 +71,9 @@ export const mainContact = () => {
     map.setAttribute("id", "map")
     const titulo = document.createElement("h3");
     titulo.innerHTML = "Contacto"
-    section.append(titulo, contactos, map)
+    const oficina = document.createElement("h3");
+    oficina.innerText = "Nuestra oficina";
+    section.append(titulo, contactos, oficina, map)
     main.append(section)
 
     createMap();
