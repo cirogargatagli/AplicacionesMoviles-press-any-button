@@ -22,11 +22,11 @@ export const mainHome = () => {
     </section>
     <section class="lanzamientos">
         <h3>Próximos lanzamientos</h3>
-        <iframe class="video-home" src="https://www.youtube.com/embed/l1VduMx-edY?start=5" 
-            title="YouTube video player" frameborder="0" 
+        <iframe class="video-home" src="https://www.youtube.com/embed/iA3-Lyl7VcI?start=5" title="YouTube video player" frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen
         >
+        </iframe>
         </iframe>
     </section>
     `
