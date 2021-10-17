@@ -13,14 +13,32 @@ export const mainHome = () => {
                 <li><img src="../img/carrousel/residentEvil.jpg" alt=""></li>
             </ul>
     </section>
+    <section class="visitados">
+    </section>
+    <section class="destacadas">
+        <h3>Ofertas destacadas</h3>
+        <div class="ofertas ofertasDestacadas">
+        </div>
+    </section>
+    <section class="lanzamientos">
+        <h3>Próximos lanzamientos</h3>
+        <iframe class="video-home" src="https://www.youtube.com/embed/l1VduMx-edY?start=5" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+        >
+        </iframe>
+    </section>
     `
     mostrarVisitados();
-    mostrarDestacadas();
+    setTimeout(() => {
+        mostrarDestacadas();
+    }, 1000);
+
 }
 
 const mostrarVisitados = () => {
-    const sectionVisitados = document.createElement("section");
-    sectionVisitados.className = "visitados"
+    const sectionVisitados = document.querySelector(".visitados");
     const divVisitados = document.createElement("div");
     divVisitados.className = "ofertas";
     let visitados = JSON.parse(localStorage.getItem("visitados") || "[]")
@@ -61,12 +79,8 @@ const mostrarVisitados = () => {
 }
 
 const mostrarDestacadas = () => {
-    const sectionDestacados = document.createElement("section");
-    sectionDestacados.className = "destacados";
-    const divDestacadas = document.createElement("div");
-    divDestacadas.className = "ofertas";
-    let titulo = document.createElement("h3");
-    titulo.innerText = "Destacados";
+    const divDestacadas = document.querySelector(".ofertasDestacadas")
+    mostrarLoader("ofertasDestacadas")
     getDestacados()
         .done(destacadas => {
             destacadas.forEach(destacada => {
@@ -94,11 +108,9 @@ const mostrarDestacadas = () => {
 
                 divDestacadas.append(divGame)
             });
-            sectionDestacados.append(titulo, divDestacadas)
-
+            quitarLoader("ofertasDestacadas")
         })
         .fail(error => {
             console.log(error)
         })
-    main.append(sectionDestacados)
 }
