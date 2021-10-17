@@ -1,5 +1,5 @@
-export const mostrarLoader = (idPadre) => {
-    const divPadre = document.querySelector("." + idPadre)
+export const mostrarLoader = (classPadre) => {
+    const divPadre = document.querySelector("." + classPadre)
     const divLoader = document.createElement("div");
     divLoader.setAttribute("id", "divLoader");
     divLoader.append(loader())
@@ -13,8 +13,8 @@ const loader = () => {
     return loader;
 }
 
-export const quitarLoader = (idPadre) => {
-    const divPadre = document.querySelector("." + idPadre)
+export const quitarLoader = (classPadre) => {
+    const divPadre = document.querySelector("." + classPadre)
     const divLoader = document.getElementById("divLoader")
     if (divLoader) {
         divPadre.removeChild(divLoader)
